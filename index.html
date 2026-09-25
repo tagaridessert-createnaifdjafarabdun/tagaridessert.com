@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tagari Dessert — luxury dessert experience dengan kreasi manis yang elegan dan berkesan." />
+  <meta name="theme-color" content="#0c0b0a" />
+  <title>Tagari Dessert — Sweetness, Elevated.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0c0b0a;
+      --surface: #141210;
+      --surface-2: #1b1815;
+      --cream: #f6f0e7;
+      --muted: #aaa096;
+      --gold: #c9a66b;
+      --gold-light: #e3c58e;
+      --line: rgba(246,240,231,.12);
+      --glass: rgba(15,13,11,.68);
+      --shadow: 0 24px 70px rgba(0,0,0,.32);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background:
+        radial-gradient(circle at 80% 0%, rgba(201,166,107,.08), transparent 28rem),
+        var(--bg);
+      color: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(calc(100% - 40px), var(--max)); margin-inline: auto; }
+    .serif { font-family: "Playfair Display", serif; }
+
+    /* Navbar */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 1000;
+      transition: .35s ease;
+    }
+    .nav.scrolled {
+      background: rgba(12,11,10,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+      letter-spacing: .08em;
+    }
+    .brand span { color: var(--gold-light); }\n    .brand-mark { display: inline-block; margin-right: 6px; font-size: .8em; transform: translateY(-1px); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: #d8d0c7;
+      font-size: .9rem;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 8px 0;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 2px;
+      width: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-cta {
+      border: 1px solid rgba(227,197,142,.55);
+      padding: 11px 17px;
+      border-radius: 999px;
+      color: var(--cream);
+      transition: .3s ease;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--bg);
+      border-color: var(--gold);
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--cream);
+      font-size: 1.6rem;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(7,6,5,.86) 0%, rgba(7,6,5,.58) 48%, rgba(7,6,5,.25) 100%),
+        linear-gradient(0deg, rgba(7,6,5,.48), transparent 40%),
+        url("a_luxurious_warm_editorial_style_branding_and_he.png") center/cover;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(201,166,107,.13), transparent 34rem);
+      z-index: -1;
+    }
+    .hero-content { padding: 150px 0 100px; max-width: 760px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold-light);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--gold);
+    }
+    h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(4rem, 8vw, 7.6rem);
+      font-weight: 500;
+      line-height: .93;
+      letter-spacing: -.045em;
+    }
+    .hero p {
+      max-width: 570px;
+      margin: 28px 0 34px;
+      color: #d0c7bd;
+      font-size: 1.05rem;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: transform .3s ease, background .3s ease, border .3s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--cream); color: var(--bg); }
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-ghost { border-color: rgba(246,240,231,.3); background: rgba(255,255,255,.04); }
+    .btn-ghost:hover { border-color: var(--gold); background: rgba(201,166,107,.1); }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #aaa198;
+      font-size: .75rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    /* Sections */
+    section { padding: 110px 0; }
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+    .section-head h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+    .section-head p { max-width: 470px; color: var(--muted); }
+
+    /* Story */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .story-image {
+      min-height: 620px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .story-image img { height: 100%; object-fit: cover; }
+    .story-copy p { color: var(--muted); margin: 22px 0; }
+    .quote {
+      margin-top: 32px;
+      padding-left: 20px;
+      border-left: 1px solid var(--gold);
+      color: #e5ddd3;
+      font-family: "Playfair Display", serif;
+      font-size: 1.45rem;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: linear-gradient(145deg, rgba(255,255,255,.055), rgba(255,255,255,.018));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .4s ease, border .4s ease, box-shadow .4s ease;
+    }
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(201,166,107,.35);
+      box-shadow: 0 24px 60px rgba(0,0,0,.25);
+    }
+    .card-img { height: 360px; overflow: hidden; }
+    .card-img img { height: 100%; object-fit: cover; transition: transform .7s ease; }
+    .card:hover .card-img img { transform: scale(1.05); }
+    .card-body { padding: 24px; }
+    .card-body h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+    }
+    .card-body p { color: var(--muted); font-size: .92rem; margin: 8px 0 18px; }
+    .price { color: var(--gold-light); font-weight: 600; }
+
+    /* Experience */
+    .experience {
+      background: var(--surface);
+      border-block: 1px solid var(--line);
+    }
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 70px;
+      align-items: center;
+    }
+    .experience-copy p { color: var(--muted); margin: 20px 0; }
+    .features { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 30px; }
+    .feature {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.025);
+    }
+    .feature i { font-size: 1.45rem; color: var(--gold-light); }
+    .feature h4 { margin: 12px 0 5px; }
+    .feature p { margin: 0; font-size: .85rem; }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr .7fr;
+      grid-auto-rows: 250px;
+      gap: 14px;
+    }
+    .gallery-item { border-radius: 20px; overflow: hidden; }
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease, filter .7s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.04); filter: brightness(1.08); }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item:nth-child(4) { grid-column: span 2; }
+
+    /* Testimonials */
+    .testimonial-wrap {
+      max-width: 820px;
+      margin: auto;
+      text-align: center;
+      position: relative;
+    }
+    .quote-mark {
+      font-family: Georgia, serif;
+      font-size: 6rem;
+      line-height: .5;
+      color: var(--gold);
+      opacity: .55;
+    }
+    .testimonial {
+      display: none;
+      animation: fade .5s ease;
+    }
+    .testimonial.active { display: block; }
+    .testimonial blockquote {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.65rem, 3vw, 2.5rem);
+      line-height: 1.3;
+      margin: 25px 0;
+    }
+    .testimonial .name { color: var(--gold-light); }
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 35px;
+    }
+    .slider-btn, .dot {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--cream);
+    }
+    .slider-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+    }
+    .dots { display: flex; gap: 7px; margin: 0 8px; }
+    .dot { width: 7px; height: 7px; padding: 0; border-radius: 50%; }
+    .dot.active { background: var(--gold); border-color: var(--gold); }
+
+    /* Reservation */
+    .reservation {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(201,166,107,.12), transparent 24rem),
+        var(--surface);
+      border-top: 1px solid var(--line);
+    }
+    .reserve-grid {
+      display: grid;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 70px;
+      align-items: start;
+    }
+    .reserve-copy p { color: var(--muted); margin: 20px 0; }
+    .contact-list { display: grid; gap: 14px; margin-top: 28px; }
+    .contact-item { display: flex; gap: 12px; align-items: center; color: #d8d0c7; }
+    .contact-item i { color: var(--gold-light); font-size: 1.2rem; }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 14px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.025);
+      box-shadow: var(--shadow);
+    }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: #c8c0b7; font-size: .82rem; }
+    input, textarea, select {
+      width: 100%;
+      border: 1px solid var(--line);
+      outline: 0;
+      color: var(--cream);
+      background: rgba(0,0,0,.18);
+      border-radius: 13px;
+      padding: 13px 14px;
+      transition: border .25s ease, background .25s ease;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(201,166,107,.65);
+      background: rgba(0,0,0,.28);
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    option { color: #111; }
+    .form-message { grid-column: 1 / -1; color: var(--gold-light); font-size: .9rem; min-height: 22px; }
+
+    /* Footer */
+    footer {
+      padding: 55px 0 28px;
+      border-top: 1px solid var(--line);
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      align-items: start;
+    }
+    .footer-brand p { color: var(--muted); max-width: 330px; margin-top: 12px; }
+    .socials { display: flex; gap: 9px; }
+    .socials a {
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: #cfc6bc;
+      transition: .25s ease;
+    }
+    .socials a:hover { color: var(--gold-light); border-color: var(--gold); transform: translateY(-2px); }
+    .copyright {
+      margin-top: 45px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: #756e67;
+      font-size: .8rem;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-links {
+        position: absolute;
+        top: 82px;
+        left: 20px;
+        right: 20px;
+        display: grid;
+        gap: 4px;
+        padding: 14px;
+        background: rgba(16,14,12,.96);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        transform: translateY(-15px);
+        opacity: 0;
+        pointer-events: none;
+        transition: .3s ease;
+      }
+      .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav-links a, .nav-cta { padding: 12px; }
+      .menu-btn { display: block; }
+      .story-grid, .experience-grid, .reserve-grid { grid-template-columns: 1fr; gap: 40px; }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .card:last-child { grid-column: 1 / -1; }
+      .story-image { min-height: 480px; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      section { padding: 80px 0; }
+      .nav-inner { height: 72px; }
+      .nav-links { top: 72px; left: 14px; right: 14px; }
+      .hero { min-height: 88vh; }
+      .hero-content { padding: 130px 0 90px; }
+      h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
+      .section-head { display: block; }
+      .section-head p { margin-top: 18px; }
+      .cards, .features, form { grid-template-columns: 1fr; }
+      .card:last-child { grid-column: auto; }
+      .card-img { height: 310px; }
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: 180px;
+      }
+      .gallery-item:first-child { grid-row: span 2; }
+      .gallery-item:nth-child(4) { grid-column: span 2; }
+      .footer-grid { flex-direction: column; }
+      .field.full, .form-message { grid-column: auto; }
+      .scroll-note { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand"><span class="brand-mark">✦</span> TAGARI <span>DESSERT</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#story">Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#experience">Experience</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reservation" class="nav-cta">Reserve</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Buka menu" aria-expanded="false">
+        <i class="ri-menu-4-line"></i>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content reveal">
+        <div class="eyebrow">Artisan Dessert House</div>
+        <h1 class="serif">Sweet Moments,<br><em>Lasting Memories.</em></h1>
+        <p>
+          Nikmati dessert artisan yang dirancang seperti karya seni:
+          lembut, detail, berkarakter, dan dibuat untuk meninggalkan kesan.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#menu">Explore Menu <i class="ri-arrow-right-line"></i></a>
+          <a class="btn btn-ghost" href="#reservation">Make a Reservation</a>
+        </div>
+      </div>
+      <div class="scroll-note">Scroll to discover</div>
+    </section>
+
+    <section id="story">
+      <div class="container story-grid">
+        <div class="story-image reveal">
+          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=85" alt="Dessert artistik Tagari" loading="lazy">
+        </div>
+        <div class="story-copy reveal">
+          <div class="eyebrow">Our Story</div>
+          <h2 class="serif">Manis yang dibuat dengan niat.</h2>
+          <p>
+            Tagari Dessert lahir dari gagasan sederhana: dessert tidak hanya
+            tentang rasa manis, tetapi tentang suasana, tekstur, aroma, dan
+            momen yang ingin diingat.
+          </p>
+          <p>
+            Setiap kreasi kami dibuat dalam jumlah terbatas dengan perhatian
+            pada detail, menggunakan bahan pilihan dan pendekatan yang modern.
+          </p>
+          <div class="quote">
+            “A little sweetness can turn an ordinary moment into a memory.”
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Signature Collection</div>
+            <h2 class="serif">The sweet selection.</h2>
+          </div>
+          <p>Contoh menu unggulan. Silakan sesuaikan nama, deskripsi, dan harga dengan menu Tagari Dessert yang sebenarnya.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=85" alt="Velvet Strawberry Cake" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Velvet Strawberry</h3>
+              <p>Vanilla sponge, strawberry compote, mascarpone cream, dan aroma citrus.</p>
+              <span class="price">Rp 58.000</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=1000&q=85" alt="Chocolate dessert" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Dark Cacao</h3>
+              <p>Dark chocolate mousse, cocoa crumble, sea salt caramel, dan chocolate glaze.</p>
+              <span class="price">Rp 62.000</span>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-img">
+              <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1000&q=85" alt="Tropical dessert bowl" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3>Tropical Cloud</h3>
+              <p>Coconut mousse, mango gel, passion fruit, dan tropical granola.</p>
+              <span class="price">Rp 55.000</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="container experience-grid">
+        <div class="experience-copy reveal">
+          <div class="eyebrow">The Experience</div>
+          <h2 class="serif">Bukan sekadar dessert.</h2>
+          <p>
+            Kami percaya pengalaman terbaik hadir ketika setiap elemen terasa
+            intentional — dari plating hingga ambience.
+          </p>
+          <div class="features">
+            <div class="feature">
+              <i class="ri-cake-3-line"></i>
+              <h4>Crafted Daily</h4>
+              <p>Dibuat segar dengan perhatian pada detail.</p>
+            </div>
+            <div class="feature">
+              <i class="ri-leaf-line"></i>
+              <h4>Selected Ingredients</h4>
+              <p>Bahan pilihan untuk rasa yang lebih bersih.</p>
+            </div>
+            <div class="feature">
+              <i class="ri-heart-3-line"></i>
+              <h4>Made with Care</h4>
+              <p>Setiap sajian dirancang dengan karakter.</p>
+            </div>
+            <div class="feature">
+              <i class="ri-magic-line"></i>
+              <h4>Elegant Moments</h4>
+              <p>Cocok untuk date, celebration, atau me-time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-image reveal">
+          <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1400&q=85" alt="Dessert dengan plating elegan" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Visual Journal</div>
+            <h2 class="serif">A feast for the eyes.</h2>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=85" alt="Chocolate cake" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=85" alt="Dessert pastry" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=900&q=85" alt="Cupcake dessert" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1558326567-98ae2405596b?auto=format&fit=crop&w=1200&q=85" alt="Dessert plate" loading="lazy"></div>
+          <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=900&q=85" alt="Elegant pastry" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews">
+      <div class="container testimonial-wrap">
+        <div class="eyebrow">Guest Notes</div>
+        <div class="quote-mark">“</div>
+
+        <div class="testimonial active">
+          <blockquote>“Dessert-nya cantik, rasanya balanced, dan ambience-nya bikin betah.”</blockquote>
+          <div class="name">— Alya, Jakarta</div>
+        </div>
+        <div class="testimonial">
+          <blockquote>“A perfect place for a slow afternoon and something beautifully sweet.”</blockquote>
+          <div class="name">— Raka, Bandung</div>
+        </div>
+        <div class="testimonial">
+          <blockquote>“Detail kecilnya terasa banget. Dari plating sampai rasa, semuanya thoughtful.”</blockquote>
+          <div class="name">— Naya, Surabaya</div>
+        </div>
+
+        <div class="slider-controls">
+          <button class="slider-btn" id="prev" aria-label="Testimonial sebelumnya"><i class="ri-arrow-left-line"></i></button>
+          <div class="dots" id="dots"></div>
+          <button class="slider-btn" id="next" aria-label="Testimonial berikutnya"><i class="ri-arrow-right-line"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="reservation" id="reservation">
+      <div class="container reserve-grid">
+        <div class="reserve-copy reveal">
+          <div class="eyebrow">Come Say Hello</div>
+          <h2 class="serif">Make it a sweet moment.</h2>
+          <p>
+            Isi formulir untuk mengirim permintaan reservasi. Form ini bersifat
+            demo dan dapat dihubungkan ke WhatsApp, email, atau backend.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item"><i class="ri-map-pin-2-line"></i><span>Indonesia · By Reservation</span></div>
+            <div class="contact-item"><i class="ri-time-line"></i><span>Everyday · 10:00 — 21:00</span></div>
+            <div class="contact-item"><i class="ri-instagram-line"></i><span>@tagaridessert</span></div>
+          </div>
+        </div>
+
+        <form id="reservationForm" class="reveal">
+          <div class="field">
+            <label for="name">Nama</label>
+            <input id="name" name="name" type="text" placeholder="Nama lengkap" required>
+          </div>
+          <div class="field">
+            <label for="phone">WhatsApp</label>
+            <input id="phone" name="phone" type="tel" placeholder="+62..." required>
+          </div>
+          <div class="field">
+            <label for="date">Tanggal</label>
+            <input id="date" name="date" type="date" required>
+          </div>
+          <div class="field">
+            <label for="time">Waktu</label>
+            <select id="time" name="time" required>
+              <option value="">Pilih waktu</option>
+              <option>10:00</option><option>11:00</option><option>12:00</option>
+              <option>13:00</option><option>14:00</option><option>15:00</option>
+              <option>16:00</option><option>17:00</option><option>18:00</option>
+              <option>19:00</option><option>20:00</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="guests">Jumlah Tamu</label>
+            <select id="guests" name="guests" required>
+              <option value="">Pilih jumlah</option>
+              <option>1–2 orang</option>
+              <option>3–4 orang</option>
+              <option>5–8 orang</option>
+              <option>9+ orang</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion">
+              <option value="">Pilih (opsional)</option>
+              <option>Date</option>
+              <option>Birthday</option>
+              <option>Celebration</option>
+              <option>Casual</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">Catatan</label>
+            <textarea id="message" name="message" placeholder="Ada request khusus?"></textarea>
+          </div>
+          <div class="form-message" id="formMessage" aria-live="polite"></div>
+          <div class="field full">
+            <button class="btn btn-primary" type="submit">Kirim Permintaan <i class="ri-arrow-right-up-line"></i></button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand"><span class="brand-mark">✦</span> TAGARI <span>DESSERT</span></div>
+          <p>Sweetness, elevated. Crafted for moments worth remembering.</p>
+        </div>
+        <div class="socials">
+          <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+          <a href="#" aria-label="TikTok"><i class="ri-tiktok-line"></i></a>
+          <a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-line"></i></a>
+        </div>
+      </div>
+      <div class="copyright">© <span id="year"></span> Tagari Dessert. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled", window.scrollY > 20);
+    }, { passive: true });
+
+    menuBtn.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", open);
+      menuBtn.innerHTML = open
+        ? '<i class="ri-close-line"></i>'
+        : '<i class="ri-menu-4-line"></i>';
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.innerHTML = '<i class="ri-menu-4-line"></i>';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    const sections = [...document.querySelectorAll("main section[id]")];
+    const navAnchors = [...document.querySelectorAll(".nav-links a[href^='#']")];
+
+    const activeObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.classList.toggle(
+            "active", a.getAttribute("href") === "#" + entry.target.id
+          ));
+        }
+      });
+    }, { rootMargin: "-40% 0px -50% 0px" });
+
+    sections.forEach(section => activeObserver.observe(section));
+
+    // Testimonial slider
+    const testimonials = [...document.querySelectorAll(".testimonial")];
+    const dotsContainer = document.getElementById("dots");
+    let current = 0;
+    let sliderTimer;
+
+    testimonials.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = "dot";
+      dot.setAttribute("aria-label", `Testimonial ${index + 1}`);
+      dot.addEventListener("click", () => showSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    function showSlide(index) {
+      current = (index + testimonials.length) % testimonials.length;
+      testimonials.forEach((item, i) => item.classList.toggle("active", i === current));
+      [...dotsContainer.children].forEach((dot, i) => dot.classList.toggle("active", i === current));
+    }
+
+    document.getElementById("prev").addEventListener("click", () => {
+      showSlide(current - 1);
+      restartSlider();
+    });
+
+    document.getElementById("next").addEventListener("click", () => {
+      showSlide(current + 1);
+      restartSlider();
+    });
+
+    function restartSlider() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => showSlide(current + 1), 5500);
+    }
+
+    showSlide(0);
+    restartSlider();
+
+    // Reservation demo
+    const dateInput = document.getElementById("date");
+    const today = new Date();
+    const localDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+      .toISOString().split("T")[0];
+    dateInput.min = localDate;
+
+    document.getElementById("reservationForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const message = document.getElementById("formMessage");
+      const name = document.getElementById("name").value.trim();
+      message.textContent = `Terima kasih, ${name}. Permintaan reservasi sudah siap diproses. Hubungkan form ini ke WhatsApp/backend untuk menerima data secara nyata.`;
+      e.target.reset();
+      dateInput.min = localDate;
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape") {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+        menuBtn.innerHTML = '<i class="ri-menu-4-line"></i>';
+      }
+    });
+  </script>
+</body>
+</html>
